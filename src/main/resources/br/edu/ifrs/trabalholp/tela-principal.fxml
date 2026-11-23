@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifrs.trabalholp.controller.TelaPrincipalController">
+ <top><VBox spacing="5" style="-fx-padding:16;-fx-background-color:#eaf2ec;"><Label style="-fx-font-size:21px;-fx-font-weight:bold;-fx-text-fill:#285943;" text="SISTEMA DE CONTROLE DE VALIDADE" /><Label />
+         <Label fx:id="status" text="Label" visible="false" /></VBox></top>
+ <center><TabPane tabClosingPolicy="UNAVAILABLE">
+  <tabs>
+   <Tab text="Produtos"><ScrollPane fitToWidth="true"><VBox spacing="9" style="-fx-padding:15;">
+    <Label style="-fx-font-size:16px;-fx-font-weight:bold;" text="Cadastro de produtos" />
+    <GridPane hgap="8" vgap="8">
+     <Label text="Nome" GridPane.columnIndex="0" GridPane.rowIndex="0" /><TextField fx:id="pnome" promptText="Nome do produto" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+     <Label text="Categoria" GridPane.columnIndex="2" GridPane.rowIndex="0" /><TextField fx:id="pcat" promptText="Categoria" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+     <Label text="Validade" GridPane.columnIndex="0" GridPane.rowIndex="1" /><DatePicker fx:id="pvalidade" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+     <Label text="Quantidade" GridPane.columnIndex="2" GridPane.rowIndex="1" /><TextField fx:id="pqtd" promptText="Ex.: 10" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+     <Label text="Fornecedor" GridPane.columnIndex="0" GridPane.rowIndex="2" /><ComboBox fx:id="pfornecedor" maxWidth="Infinity" promptText="Selecione" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+                        <columnConstraints>
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints />
+                           <RowConstraints />
+                           <RowConstraints />
+                        </rowConstraints>
+    </GridPane>
+    <HBox spacing="7"><Button onAction="#salvarP" text="Salvar" /><Button onAction="#editarP" text="Atualizar" /><Button onAction="#excluirP" text="Excluir" /><Button onAction="#limparP" text="Limpar" /></HBox><Separator />
+    <HBox spacing="7"><TextField fx:id="busca" promptText="Pesquisar nome ou categoria" HBox.hgrow="ALWAYS" /><Button onAction="#pesquisar" text="Pesquisar" /><Button onAction="#todos" text="Mostrar todos" /></HBox>
+    <Label fx:id="total" style="-fx-font-weight:bold;-fx-text-fill:#285943;" text="Produtos exibidos: 0" />
+    <TableView fx:id="tp" prefHeight="280"><columns><TableColumn fx:id="cpn" prefWidth="160" text="Produto" /><TableColumn fx:id="cpc" prefWidth="115" text="Categoria" /><TableColumn fx:id="cpv" prefWidth="105" text="Validade" /><TableColumn fx:id="cpsituacao" prefWidth="145" text="Situação" /><TableColumn fx:id="cpq" prefWidth="95" text="Quantidade" /><TableColumn fx:id="cpf" prefWidth="155" text="Fornecedor" /></columns></TableView>
+   </VBox></ScrollPane></Tab>
+   <Tab text="Fornecedores"><VBox spacing="10" style="-fx-padding:15;">
+    <Label style="-fx-font-size:16px;-fx-font-weight:bold;" text="Cadastro de fornecedores" />
+    <GridPane hgap="8" vgap="8"><Label text="Nome" GridPane.columnIndex="0" GridPane.rowIndex="0" /><TextField fx:id="fnome" GridPane.columnIndex="1" GridPane.rowIndex="0" /><Label text="Telefone" GridPane.columnIndex="0" GridPane.rowIndex="1" /><TextField fx:id="ftel" GridPane.columnIndex="1" GridPane.rowIndex="1" /><Label text="E-mail" GridPane.columnIndex="0" GridPane.rowIndex="2" /><TextField fx:id="femail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints></GridPane>
+    <HBox spacing="7"><Button onAction="#salvarF" text="Salvar" /><Button onAction="#editarF" text="Atualizar" /><Button onAction="#excluirF" text="Excluir" /><Button onAction="#limparF" text="Limpar" /></HBox>
+    <TableView fx:id="tf" VBox.vgrow="ALWAYS"><columns><TableColumn fx:id="cfn" prefWidth="220" text="Fornecedor" /><TableColumn fx:id="cft" prefWidth="160" text="Telefone" /><TableColumn fx:id="cfe" prefWidth="250" text="E-mail" /></columns></TableView>
+   </VBox></Tab>
+   <Tab text="Movimentações"><VBox spacing="10" style="-fx-padding:15;">
+    <Label style="-fx-font-size:16px;-fx-font-weight:bold;" text="Entrada e saída de estoque" />
+    <GridPane hgap="8" vgap="8"><Label text="Produto" GridPane.columnIndex="0" GridPane.rowIndex="0" /><ComboBox fx:id="mproduto" maxWidth="Infinity" promptText="Selecione o produto" GridPane.columnIndex="1" GridPane.rowIndex="0" /><Label text="Tipo" GridPane.columnIndex="0" GridPane.rowIndex="1" /><ComboBox fx:id="mtipo" maxWidth="Infinity" promptText="Entrada ou saída" GridPane.columnIndex="1" GridPane.rowIndex="1" /><Label text="Quantidade" GridPane.columnIndex="0" GridPane.rowIndex="2" /><TextField fx:id="mqtd" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints></GridPane>
+    <Button onAction="#movimentar" text="Registrar movimentação" /><Label text="A quantidade em estoque é atualizada junto com o registro da movimentação." wrapText="true" />
+    <TableView fx:id="tm" VBox.vgrow="ALWAYS"><columns><TableColumn fx:id="cmp" prefWidth="220" text="Produto" /><TableColumn fx:id="cmt" prefWidth="120" text="Tipo" /><TableColumn fx:id="cmq" prefWidth="120" text="Quantidade" /><TableColumn fx:id="cmd" prefWidth="180" text="Data e hora" /></columns></TableView>
+   </VBox></Tab>
+  </tabs></TabPane></center>
+</BorderPane>
