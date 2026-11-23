@@ -128,7 +128,7 @@ O vídeo apresenta o funcionamento do sistema e demonstra suas principais funcio
 
 
 ## 12. Repositório
-**GitHub:** [Adicionar link do repositório]
+**GitHub:** [Sistema de Controle de Validade](https://github.com/amandastohlirck31/sistema-controle-validade)
 
 ---
 
